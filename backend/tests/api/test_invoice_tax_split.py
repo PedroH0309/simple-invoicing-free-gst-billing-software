@@ -177,7 +177,7 @@ def test_tax_inclusive_invoice_preserves_entered_total(
     assert float(item.sgst_amount) == pytest.approx(expected_sgst)
     assert float(item.igst_amount) == pytest.approx(expected_igst)
     assert float(item.cgst_amount + item.sgst_amount + item.igst_amount) == pytest.approx(
-        item.tax_amount
+        float(item.tax_amount)
     )
     assert float(item.taxable_amount + item.tax_amount) == pytest.approx(item.line_total)
     assert float(invoice.taxable_amount + invoice.total_tax_amount) == pytest.approx(
